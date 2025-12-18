@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Teman Cerita 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Comic Sans MS", "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #ffe0f0, #e0f7fa);
+        }
+
+        /* ===== LOGIN ===== */
+        .login-page {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            background: white;
+            padding: 30px;
+            width: 330px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .login-box h2 {
+            color: #ff69b4;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 12px;
+            background: #ff69b4;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .error {
+            margin-top: 10px;
+            color: red;
+            font-size: 14px;
+        }
+
+        /* ===== DASHBOARD ===== */
+        .dashboard {
+            display: none;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #ff69b4;
+        }
+
+        .logout {
+            background: #ff5252;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        /* ===== FORM ===== */
+        .form-box {
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 500px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-box h2 {
+            text-align: center;
+            color: #ff69b4;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ff69b4;
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .success {
+            text-align: center;
+            color: #2e7d32;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== LOGIN PAGE ===== -->
+<div class="login-page" id="loginPage">
+    <div class="login-box">
+        <h2>🐻 Teman Cerita</h2>
+        <p>Tempat aman buat kamu curhat 💌</p>
+
+        <input type="text" id="username" placeholder="Nama kamu ✨">
+        <input type="password" id="password" placeholder="Password 🔒">
+
+        <button onclick="login()">Masuk 💖</button>
+        <div class="error" id="errorMsg"></div>
+    </div>
+</div>
+
+<!-- ===== DASHBOARD ===== -->
+<div class="dashboard" id="dashboardPage">
+    <div class="header">
+        <h1>🌈 Form Psikolog Remaja</h1>
+        <button class="logout" onclick="logout()">Logout 🚪</button>
+    </div>
+
+    <div class="form-box">
+        <h2>💬 Ceritakan Perasaanmu</h2>
+
+        <div class="form-group">
+            <label>😢 Apa yang sedang kamu rasakan?</label>
+            <select>
+                <option>Sedih</option>
+                <option>Capek</option>
+                <option>Kesepian</option>
+                <option>Marah</option>
+                <option>Bingung</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>📝 Cerita singkat tentang masalahmu</label>
+            <textarea rows="4" placeholder="Ketik ceritamu di sini ya..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>🌟 Apa yang kamu harapkan?</label>
+            <textarea rows="3" placeholder="Misalnya: ingin didengarkan, ingin saran, dll"></textarea>
+        </div>
+
+        <button class="submit-btn" onclick="kirim()">Kirim Cerita 💌</button>
+        <div class="success" id="successMsg"></div>
+    </div>
+</div>
+
+<script>
+    function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (username !== "" && password === "soshum") {
+            document.getElementById("loginPage").style.display = "none";
+            document.getElementById("dashboardPage").style.display = "block";
+        } else {
+            document.getElementById("errorMsg").innerText =
+                "Nama harus diisi & password harus 'soshum' 😥";
+        }
+    }
+
+    function logout() {
+        document.getElementById("dashboardPage").style.display = "none";
+        document.getElementById("loginPage").style.display = "flex";
+        document.getElementById("successMsg").innerText = "";
+    }
+
+    function kirim() {
+        document.getElementById("successMsg").innerText =
+            "💖 Terima kasih sudah berbagi. Kamu tidak sendirian 🌈";
+    }
+</script>
+
+</body>
+</html>
